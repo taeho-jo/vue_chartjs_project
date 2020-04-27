@@ -1,8 +1,6 @@
 <template>
   <Layout>
-      <div class="container">
-
-      </div>
+    <div class="container"></div>
     <router-view></router-view>
   </Layout>
 </template>
@@ -17,5 +15,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
