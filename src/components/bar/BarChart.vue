@@ -1,9 +1,14 @@
 <template>
-  <h1>Barddd</h1>
+  <div>asdfasdf
+  </div>
 </template>
 
 <script>
-export default {};
+
+
+export default {
+
+};
 </script>
 
-<style></style>
+<style scoped></style>

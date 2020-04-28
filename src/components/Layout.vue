@@ -8,7 +8,7 @@
                 justify-content: center; align-items: center"
         >
           <img src="@/assets/images/vue_logo.png" alt="vue" style="width: 100px" />
-          <img src="@/assets/images/d3_logo.png" alt="d3" style="width: 100px" />
+          <img src="@/assets/images/chartjs.png" alt="d3" style="width: 100px" />
         </v-container>
 
         <template v-for="item in items">
@@ -46,7 +46,7 @@
 
     <v-app-bar app clipped-left dense>
       <v-app-bar-nav-icon @click="changeDrawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Vue & D3</v-toolbar-title>
+      <v-toolbar-title>Vue & ChartJS</v-toolbar-title>
     </v-app-bar>
     <div :class="mainPageLayout">
       <slot></slot>
