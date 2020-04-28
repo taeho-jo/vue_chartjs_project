@@ -4,7 +4,11 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    curParams() {
+      return this.$route.params
+    }
+  },
   mutations: {},
   actions: {},
   modules: {}
