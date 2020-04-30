@@ -8,7 +8,6 @@
 <script>
 import Layout from '../components/Layout';
 export default {
-  name: 'main',
   components: {
     Layout,
   },
@@ -16,4 +15,3 @@ export default {
 </script>
 
 <style lang="scss" scoped></style>
-

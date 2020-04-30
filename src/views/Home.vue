@@ -10,7 +10,6 @@
 
 <script>
 export default {
-  name: 'home',
   methods: {
     goToMainPage() {
       this.$router.push('/main');

@@ -1,29 +1,59 @@
 <template>
   <div class="chart-container">
-    <bar-chart class="line" is="column-chart" :data="chartData" :colors="['#b00', '#666']"></bar-chart>
+    <bar-chart class="line" is="column-chart" :data="reChartData" :colors="['#b00', '#666']"></bar-chart>
+    <button @click="check">dfasdfasdfasdf</button>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
-      chartData: {
-        '2020-04-29': 3,
-        '2020-04-30': 5,
-        '2020-05-01': 2,
-        '2020-05-02': 6,
-        '2020-05-03': -5,
-      },
-        color: ['blue', 'green', 'yellow', 'orange']
-    }
-  }
+      data: []
+    };
+  },
+  methods: {
+    check() {
+      console.log(this.reData);
+      console.log(this.reChartData);
+    },
+  },
+  computed: {
+    reData() {
+      const arr = [...this.data];
+      const newArr = arr.slice(0, 15);
+      return newArr;
+    },
+    reChartData() {
+      let obj = {};
+      this.reData.forEach(el => {
+        obj = {
+          ...obj,
+          [el.FirstName]: el.Height,
+        };
+      });
+      return obj
+    },
+  },
+  mounted() {
+    axios
+      .get(
+        'https://api.sportsdata.io/v3/nba/scores/json/Players?key=df78610a9b784d68b0dad23a610f8648',
+      )
+      .then(res => {
+        this.data = res.data;
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  },
 };
 </script>
 
 <style scoped lang="scss">
-  .chart-container {
-    width: 100%;
-    max-width: 900px;
-  }
+.chart-container {
+  width: 100%;
+  max-width: 900px;
+}
 </style>
