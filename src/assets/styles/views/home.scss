@@ -1,4 +1,5 @@
 .home {
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,5 +22,34 @@
   button:hover {
     border: 2px solid #ff6d78;
     color: #ff6d78;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .home {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    img {
+      width: 120px;
+    }
+    button {
+      margin-top: 50px;
+      width: 120px;
+      height: 40px;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: none;
+      border: 2px solid #40b882;
+      font-size: 14px;
+      color: #40b882;
+    }
+    button:hover {
+      border: 2px solid #ff6d78;
+      color: #ff6d78;
+    }
   }
 }
