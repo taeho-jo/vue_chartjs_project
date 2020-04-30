@@ -1,38 +1,44 @@
 <template>
   <div class="chart-container">
+    <h1>NBA Player height</h1>
     <bar-chart
       class="line"
       is="column-chart"
-      :data="chartData"
-    ></bar-chart
-    ><bar-chart
+      label="height"
+      xtitle="Player FirstName"
+      ytitle="Height"
+      :colors="['#b00']"
+      :data="heightData"
+    ></bar-chart>
+    <h1>NBA Player weight</h1>
+    <bar-chart
       class="line"
-      :data="chartData"
+      is="column-chart"
+      xtitle="Player FirstName"
+      ytitle="Weight"
+      label="weight"
+      :colors="['#666']"
+      :data="weightData"
+    ></bar-chart>
+    <h1>NBA Player height & weight</h1>
+    <bar-chart
+      class="line"
+      is="column-chart"
+      xtitle="Player FirstName"
+      ytitle="height & weight"
+      :colors="['#b00', '#666']"
+      :data="multiData"
     ></bar-chart>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      // aaaa: [
-      //   { name: 'Workout', data: { '2017-01-01': 3, '2017-01-02': 4 } },
-      //   { name: 'Call parents', data: { '2017-01-01': 5, '2017-01-02': 3 } },
-      // ],
-    };
-  },
-  methods: {
-    check() {
-      console.log(this.$store.state.data);
-      console.log(this.$store.state.reData);
-    },
-  },
   computed: {
     data() {
       return this.$store.state.reData;
     },
-    chartData() {
+    heightData() {
       let obj = {};
       this.data.forEach(el => {
         obj = {
@@ -42,6 +48,35 @@ export default {
       });
       return obj;
     },
+    weightData() {
+      let obj = {};
+      this.data.forEach(el => {
+        obj = {
+          ...obj,
+          [el.FirstName]: el.Weight,
+        };
+      });
+      return obj;
+    },
+    multiData() {
+      const findOne = this.data.find(el => el === 'Height');
+      const findTwo = this.data.find(el => el === 'Weight');
+      const reData = [
+        {
+          name: findOne,
+          data: {
+            ...this.heightData,
+          },
+        },
+        {
+          name: findTwo,
+          data: {
+            ...this.weightData,
+          },
+        },
+      ];
+      return reData;
+    },
   },
 };
 </script>
@@ -50,5 +85,12 @@ export default {
 .chart-container {
   width: 100%;
   max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
 }
 </style>

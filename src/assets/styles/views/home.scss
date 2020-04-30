@@ -25,7 +25,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .home {
     background: #fff;
     display: flex;
@@ -34,7 +34,7 @@
     flex-direction: column;
     height: 100vh;
     img {
-      width: 120px;
+      width: 100px;
     }
     button {
       margin-top: 50px;

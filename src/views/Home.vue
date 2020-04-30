@@ -14,6 +14,12 @@ export default {
     goToMainPage() {
       this.$router.push('/main');
     },
+    fetchData() {
+      this.$store.dispatch('getData');
+    },
+  },
+  mounted() {
+    this.fetchData();
   },
 };
 </script>

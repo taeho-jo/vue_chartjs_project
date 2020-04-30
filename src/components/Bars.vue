@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1>Bar Chart</h1>
     <div class="box">
       <router-view></router-view>
     </div>
