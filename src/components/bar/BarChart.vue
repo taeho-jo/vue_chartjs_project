@@ -1,52 +1,47 @@
 <template>
   <div class="chart-container">
-    <bar-chart class="line" is="column-chart" :data="reChartData" :colors="['#b00', '#666']"></bar-chart>
-    <button @click="check">dfasdfasdfasdf</button>
+    <bar-chart
+      class="line"
+      is="column-chart"
+      :data="chartData"
+    ></bar-chart
+    ><bar-chart
+      class="line"
+      :data="chartData"
+    ></bar-chart>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 export default {
   data() {
     return {
-      data: []
+      // aaaa: [
+      //   { name: 'Workout', data: { '2017-01-01': 3, '2017-01-02': 4 } },
+      //   { name: 'Call parents', data: { '2017-01-01': 5, '2017-01-02': 3 } },
+      // ],
     };
   },
   methods: {
     check() {
-      console.log(this.reData);
-      console.log(this.reChartData);
+      console.log(this.$store.state.data);
+      console.log(this.$store.state.reData);
     },
   },
   computed: {
-    reData() {
-      const arr = [...this.data];
-      const newArr = arr.slice(0, 15);
-      return newArr;
+    data() {
+      return this.$store.state.reData;
     },
-    reChartData() {
+    chartData() {
       let obj = {};
-      this.reData.forEach(el => {
+      this.data.forEach(el => {
         obj = {
           ...obj,
           [el.FirstName]: el.Height,
         };
       });
-      return obj
+      return obj;
     },
-  },
-  mounted() {
-    axios
-      .get(
-        'https://api.sportsdata.io/v3/nba/scores/json/Players?key=df78610a9b784d68b0dad23a610f8648',
-      )
-      .then(res => {
-        this.data = res.data;
-      })
-      .catch(e => {
-        console.log(e);
-      });
   },
 };
 </script>

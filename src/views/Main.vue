@@ -11,6 +11,14 @@ export default {
   components: {
     Layout,
   },
+  methods: {
+    fetchData() {
+      this.$store.dispatch('getData')
+    }
+  },
+  mounted() {
+    this.fetchData()
+  }
 };
 </script>
 
